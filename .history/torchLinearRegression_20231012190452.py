@@ -25,9 +25,9 @@ class LinearModel(torch.nn.Module):
             y_pred = self(x_data)
             loss = self.criterion(y_pred, y_data)
 
-            optimizer.zero_grad() # It will be accumulated so we should set zero
+            optimizer.zero_grad()
             loss.backward()
-            optimizer.step() # Update
+            optimizer.step()
             Loss.append(loss.item())
             Loss_x.append(epoch)
 
