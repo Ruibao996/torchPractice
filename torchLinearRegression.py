@@ -28,7 +28,7 @@ class LinearModel(torch.nn.Module):
             optimizer.zero_grad() # It will be accumulated so we should set zero
             loss.backward()
             optimizer.step() # Update
-            Loss.append(loss.item())
+            Loss.append(loss.item()) #For plot
             Loss_x.append(epoch)
 
             print(f'Epoch [{epoch + 1}/{self.epoch_num}], Loss: {loss.item()}')
