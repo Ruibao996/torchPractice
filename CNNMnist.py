@@ -41,8 +41,11 @@ class CNN(torch.nn.Module):
         return x
     
 model = CNN()
-# Add GPU
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# Add GPU for mac we can use mps 
+if torch.backends.mps.is_available():
+    device = torch.device("mps")
+else:
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Running on", device)
 model.to(device)
 
@@ -89,10 +92,10 @@ def test():
             _, prediction = torch.max(outputs.data, dim=1)
             total += labels.size(0)
             correct += (prediction == labels).sum().item()
-    print('Accuracy on test dataset: %d %%' % (100*correct/total))
+    print('Accuracy on test dataset: %.3f %%' % (100*correct/total))
 
 
 if __name__ == '__main__':
-    for epoch in range(10):
+    for epoch in range(20):
         train(epoch)
         test()
