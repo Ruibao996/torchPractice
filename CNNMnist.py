@@ -41,7 +41,7 @@ class CNN(torch.nn.Module):
         return x
     
 model = CNN()
-# Add GPU for mac we can use mps 
+# Add GPU, for mac or AMD GPUs we can use mps to accelerate by GPU
 if torch.backends.mps.is_available():
     device = torch.device("mps")
 else:
