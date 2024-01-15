@@ -3,7 +3,6 @@
 
 import torch
 import torch.optim as optim
-import numpy
 
 # Prepare Dataset
 input_size = 4
